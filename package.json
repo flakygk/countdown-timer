@@ -1,0 +1,12 @@
+{
+  "name": "launch-countdown-timer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "watch-sass": "sass --watch ./src/sass/main.scss:./src/styles.css"
+  },
+  "devDependencies": {
+    "sass": "^1.51.0"
+  }
+}

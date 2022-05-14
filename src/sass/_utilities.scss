@@ -1,0 +1,49 @@
+.container {
+  --max-width: 100ch;
+  --padding: 2rem;
+  width: min(
+    100% - var(--padding),
+    var(--max-width)
+  );
+  margin-inline: auto;
+}
+
+.container[data-type='narrow'] {
+  --max-width: 80ch;
+}
+
+.container[data-type='wide'] {
+  --max-width: 100ch;
+}
+
+.container[data-type='vast'] {
+  --max-width: 120ch;
+}
+
+.flow > * + * {
+  margin-top: 1em;
+}
+
+.flow[data-flow='thin'] > * + * {
+  margin-top: .5em;
+}
+
+.flow[data-flow='thick'] > * + * {
+  margin-top: 2em;
+}
+
+.flow[data-flow='wide'] > * + * {
+  margin-top: 4em;
+}
+
+.flow[data-flow='large'] > * + * {
+  margin-top: 6em;
+}
+
+.flow[data-flow='vast'] > * + * {
+  margin-top: 8em;
+}
+
+.block {
+  margin-block: 1.5rem;
+}

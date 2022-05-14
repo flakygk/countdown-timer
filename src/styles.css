@@ -1,0 +1,295 @@
+:root {
+  --bg-body: #231d2b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.container {
+  --max-width: 100ch;
+  --padding: 2rem;
+  width: min(100% - var(--padding), var(--max-width));
+  margin-inline: auto;
+}
+
+.container[data-type=narrow] {
+  --max-width: 80ch;
+}
+
+.container[data-type=wide] {
+  --max-width: 100ch;
+}
+
+.container[data-type=vast] {
+  --max-width: 120ch;
+}
+
+.flow > * + * {
+  margin-top: 1em;
+}
+
+.flow[data-flow=thin] > * + * {
+  margin-top: 0.5em;
+}
+
+.flow[data-flow=thick] > * + * {
+  margin-top: 2em;
+}
+
+.flow[data-flow=wide] > * + * {
+  margin-top: 4em;
+}
+
+.flow[data-flow=large] > * + * {
+  margin-top: 6em;
+}
+
+.flow[data-flow=vast] > * + * {
+  margin-top: 8em;
+}
+
+.block {
+  margin-block: 1.5rem;
+}
+
+body {
+  display: grid;
+  background-color: var(--bg-body);
+  font-family: "Ubuntu", system-ui;
+}
+
+img {
+  user-select: none;
+}
+
+.bg-stars,
+.bg-hills {
+  position: absolute;
+  inset: 0;
+}
+.bg-stars > img,
+.bg-hills > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.bg-stars > img {
+  height: 100%;
+}
+
+.bg-hills {
+  top: auto;
+}
+
+body > *:not(.bg-hills, .bg-stars) {
+  position: relative;
+  z-index: 3;
+}
+
+.timer {
+  place-self: center;
+  color: #fff;
+  padding: 1.5rem;
+}
+
+.timer__title {
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 7rem;
+  margin-top: 3rem;
+}
+
+.timer__counter-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 2.25rem;
+}
+@media (max-width: 40em) {
+  .timer__counter-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .timer__counter-wrapper .timer__counter {
+    display: grid;
+    place-content: center;
+  }
+}
+@media (max-width: 30em) {
+  .timer__counter-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timer__counter-block {
+  width: 9.5rem;
+  aspect-ratio: 1/1;
+  box-shadow: 0 0.5625rem 0 0 hsl(0deg, 0%, 8%);
+  background-color: tomato;
+  border-radius: 0.625rem;
+  position: relative;
+  display: grid;
+}
+@media (max-width: 60em) {
+  .timer__counter-block {
+    width: 7rem;
+  }
+  .timer__counter-block .timer__counter-number {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 40em) {
+  .timer__counter-block .timer__counter-number {
+    font-size: 2.5rem;
+  }
+}
+.timer__counter-block .top, .timer__counter-block .bottom {
+  position: absolute;
+  inset: 0;
+}
+.timer__counter-block .top {
+  bottom: 50%;
+  background: #2c2c44;
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+}
+.timer__counter-block .top::before, .timer__counter-block .top::after {
+  content: "";
+  position: absolute;
+  --width: 1rem;
+  width: var(--width);
+  aspect-ratio: 1/1;
+  bottom: calc(-1 * var(--width) / 2);
+  left: calc(-1 * var(--width) / 2);
+  background: hsl(0deg, 0%, 8%);
+  z-index: 4;
+  border-radius: 0 999px 999px 0;
+}
+.timer__counter-block .top::after {
+  left: auto;
+  right: calc(-1 * var(--width) / 2);
+  border-radius: 999px 0 0 999px;
+}
+.timer__counter-block .bottom {
+  top: 50%;
+  background: #34364f;
+  border-radius: 0 0 0.5rem 0.5rem;
+  overflow: hidden;
+}
+.timer__counter-block .bottom::before, .timer__counter-block .bottom::after {
+  content: "";
+  position: absolute;
+  --width: 1rem;
+  width: var(--width);
+  aspect-ratio: 1/1;
+  top: calc(-1 * var(--width) / 2);
+  left: calc(-1 * var(--width) / 2);
+  background: hsl(0deg, 0%, 8%);
+  z-index: 4;
+  border-radius: 0 999px 999px 0;
+}
+.timer__counter-block .bottom::after {
+  left: auto;
+  right: calc(-1 * var(--width) / 2);
+  border-radius: 999px 0 0 999px;
+}
+
+.timer__counter-number {
+  position: relative;
+  z-index: 5;
+  place-self: center;
+  font-size: 5rem;
+  font-weight: 900;
+  user-select: none;
+  color: #f36283;
+}
+
+.timer__counter-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #bbb;
+}
+
+.footer {
+  place-self: center;
+}
+.footer ul {
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+.footer path {
+  transition: fill 180ms;
+}
+.footer a:hover path, .footer a:focus path {
+  fill: #f36283;
+}
+
+/*# sourceMappingURL=styles.css.map */
