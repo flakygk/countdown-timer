@@ -3,14 +3,14 @@ const hoursElem   = document.getElementById('hours');
 const minutesElem = document.getElementById('minutes');
 const secondsElem = document.getElementById('seconds');
 
-const finalDate   = new Date(2022, 6, 26);
+const finalDate   = new Date(2022, 4, 31);
 
-setInterval(timer, 1000);
+const timerInterval = setInterval(timer, 1000);
 
 function timer() {
   const milliseconds = finalDate - new Date();
 
-  if (milliseconds < 0) return;
+  if (milliseconds <= 0) return clearInterval(timerInterval);
   
   const seconds = Math.floor(milliseconds / 1000) % 60;
   const minutes = Math.floor(milliseconds / 1000 / 60) % 60;
